@@ -28,16 +28,17 @@ public class Main {
         do
         {
             System.out.println("What do you want to buy. Please choose a category");
-            System.out.println("Computing and Gaming\nHome Appliance\nTv and Audio\nSmall Appliances\nAll Products");
+            System.out.println("Computing and Gaming\nHome Appliances\nTv and Audio\nSmall Appliances\nAll Products");
             search = scanner.nextLine();
 
-        }while(!Objects.equals(search, "Tv and Audio")&&!Objects.equals(search,"Small Appliances"));
+        }while(!Objects.equals(search, "Tv and Audio")&&!Objects.equals(search,"Small Appliances")&&!Objects.equals(search,"Home Appliances"));
 
         System.out.println("Search with sub category (Y/N): ");
 
         subC=scanner.nextLine();
         Tv_And_Audio tv = new Tv_And_Audio();
         Small_Appliances small = new Small_Appliances();
+        Home_Appliances home = new Home_Appliances();
 
         switch(search)
         {
@@ -54,6 +55,15 @@ public class Main {
                 if(Objects.equals(subC,"Y"))
                 {
                     small.subCat();
+                    break;
+                }
+                small.search();
+                break;
+
+            case "Home Appliances":
+                if (Objects.equals(subC,"Y"))
+                {
+                    home.subCat();
                     break;
                 }
                 small.search();
