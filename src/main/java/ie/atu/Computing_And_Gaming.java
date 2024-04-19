@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class Computing_And_Gaming extends AllSearch implements Categories{
+public class Computing_And_Gaming extends Cart implements Categories{
 
     public void search() {
 

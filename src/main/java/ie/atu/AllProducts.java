@@ -3,7 +3,7 @@ package ie.atu;
 import java.sql.*;
 import java.util.*;
 
-public class AllProducts extends AllSearch implements Categories{
+public class AllProducts extends Cart implements Categories{
 
     public void search(){
         ArrayList<String> name = new ArrayList<String>();

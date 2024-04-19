@@ -1,7 +1,7 @@
 package ie.atu;
 import java.sql.*;
 import java.util.Scanner;
-public class Login extends AllSearch {
+public class Login extends Cart {
 
     private String TempName;
     public Login(){

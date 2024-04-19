@@ -6,7 +6,7 @@ import java.sql.*;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class Tv_And_Audio extends AllSearch implements Categories {
+public class Tv_And_Audio extends Cart implements Categories {
 
 
     public void search() {
