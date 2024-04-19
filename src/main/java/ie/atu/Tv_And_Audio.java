@@ -1,13 +1,12 @@
 package ie.atu;
 
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.sql.*;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class Tv_And_Audio extends AllProducts implements Categories {
+public class Tv_And_Audio extends AllSearch implements Categories {
 
 
     public void search() {

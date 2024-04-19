@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class Home_Appliances extends AllProducts implements Categories{
+public class Home_Appliances extends AllSearch implements Categories{
     public void search() {
 
 
