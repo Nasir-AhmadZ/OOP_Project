@@ -31,7 +31,7 @@ public class Main {
             System.out.println("Computing and Gaming\nHome Appliances\nTv and Audio\nSmall Appliances\nAll Products\nBrand");
             search = scanner.nextLine();
 
-        }while(!Objects.equals(search, "Tv and Audio")&&!Objects.equals(search,"Small Appliances")&&!Objects.equals(search,"Home Appliances")&&!Objects.equals(search,"Computing and Gaming")&&!Objects.equals(search,"Brand"));
+        }while(!Objects.equals(search, "Tv and Audio")&&!Objects.equals(search,"Small Appliances")&&!Objects.equals(search,"Home Appliances")&&!Objects.equals(search,"Computing and Gaming")&&!Objects.equals(search,"Brand")&&!Objects.equals(search,"All Products"));
         if(!Objects.equals(search,"Brand"))
         {
             System.out.println("Search with sub category (Y/N): ");
@@ -84,6 +84,15 @@ public class Main {
 
             case "Brand":
                 all.brand();
+                break;
+
+            case "All Products":
+                if (Objects.equals(subC,"Y"))
+                {
+                    all.subCat();
+                    break;
+                }
+                all.search();
                 break;
 
             default: break;
