@@ -1,5 +1,6 @@
 package ie.atu;
 import java.sql.*;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
@@ -10,53 +11,47 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         int ch;
-        String search;
+        String search,subC;
 
         Login Client = new Login();
-        Client.getUserInput();
+        /*Client.getUserInput();
         if (Client.signed()!=1){
             System.out.println("User not in the Database");
             System.out.println("Please register");
             Client.register();
-        }
+        }*/
 
-        System.out.println("What do you want to buy\nPlease choose a method of searching");
-        System.out.println("Category, Brand");
-        search = scanner.nextLine();
 
-        if (search=="Category" || search=="category" )
+        search = "scanner";
+        do
         {
-            while(search!="Tv and Audio"||search!="Home Appliances"||search!="Small Appliances"||search!="Computing and Gaming"||search!="All Products") {
-                System.out.println("Tv and Audio\nHome Appliances\nSmall Appliances\nComputing and Gaming\nAll Products");
-                System.out.println("Please enter the name of the category");
-                search=scanner.nextLine();
-            }
-            switch(search)
-            {
-                case "Tv and Audio":
-                    String selectSQL = "SELECT category" +
-                            "FROM customer";
+            System.out.println("What do you want to buy\nPlease choose a category");
+            System.out.println("Computing and Gaming\nHome Appliance\nTv and Audio\nSmall Appliance\nAll Products");
+            search = scanner.nextLine();
 
-                    Connection connection = DriverManager.getConnection(url, username, password);
-                    Statement statement = connection.createStatement();
-                    ResultSet resultSet = statement.executeQuery(selectSQL);
+        }while(search=="Tv and Audio");
 
-                    while (resultSet.next()) {
-                        String category = resultSet.getString("category");
+        System.out.println("Search with sub category (Y/N): ");
 
-                        System.out.println("Category: " + category);
-                    }
-                    System.out.println("Please select one of these subcategories");
+        subC=scanner.nextLine();
+        Tv_And_Audio tv = new Tv_And_Audio();
+
+        switch(search)
+        {
+            case "Tv and Audio":
+                if(Objects.equals(subC, "Y"))
+                {
+                    tv.subCat();
                     break;
+                }
+                tv.search();
+                break;
 
-                default: break;
+            default: break;
+        }
 
-        }
-        }
-        else if(search=="Brand"||search=="brand")
-        {
 
-        }
+
 
     }
 }
