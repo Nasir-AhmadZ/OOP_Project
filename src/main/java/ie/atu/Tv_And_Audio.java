@@ -1,0 +1,62 @@
+package ie.atu;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.sql.*;
+import java.util.Objects;
+import java.util.Scanner;
+
+public class Tv_And_Audio extends Cart implements Categories {
+
+
+    public void search() {
+
+
+        ArrayList<String> name = new ArrayList<String>();
+
+        String selectSQL = "SELECT name " + "from tvandaudio";
+
+        try (Connection connection = DriverManager.getConnection(url, username, password);
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(selectSQL)) {
+
+            while (resultSet.next()) {
+                String prodName = resultSet.getString("name");
+
+                name.add(prodName);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        for (int i = 0; i < name.size(); i++) {
+            System.out.println(name.get(i));
+        }
+
+
+    }
+
+    public void subCat(){
+
+        Scanner scanner = new Scanner(System.in);
+        String newCat;
+        do{
+            System.out.println("Please choose a sub category:\nTv\nAudio\nHeadphones\nProjector");
+            newCat = scanner.nextLine();
+        }while(!Objects.equals(newCat, "Tv") &&!Objects.equals(newCat, "Audio")&&!Objects.equals(newCat, "Headphones")&&!Objects.equals(newCat, "Projector"));
+
+        String selectSQL = "SELECT name " + "from tvandaudio where category ='"+newCat+"'";
+
+        try (Connection connection = DriverManager.getConnection(url, username, password);
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(selectSQL)) {
+
+            while (resultSet.next()) {
+                String prodName = resultSet.getString("name");
+                System.out.println(prodName);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
