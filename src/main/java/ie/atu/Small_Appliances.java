@@ -1,21 +1,17 @@
 package ie.atu;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class Tv_And_Audio extends AllProducts implements Categories {
-
-
+public class Small_Appliances extends AllProducts implements Categories{
     public void search() {
 
 
         ArrayList<String> name = new ArrayList<String>();
 
-        String selectSQL = "SELECT name " + "from tvandaudio";
+        String selectSQL = "SELECT name " + "from smallappliances";
 
         try (Connection connection = DriverManager.getConnection(url, username, password);
              Statement statement = connection.createStatement();
@@ -41,11 +37,11 @@ public class Tv_And_Audio extends AllProducts implements Categories {
         Scanner scanner = new Scanner(System.in);
         String newCat;
         do{
-            System.out.println("Please choose a sub category:\nTv\nAudio\nHeadphones\nProjector");
+            System.out.println("Please choose a sub category:\nHeating & Cooling\nCooking\nVacuum Cleaner\nCoffee Machine\nKettle & Toaster");
             newCat = scanner.nextLine();
-        }while(!Objects.equals(newCat, "Tv") &&!Objects.equals(newCat, "Audio")&&!Objects.equals(newCat, "Headphones")&&!Objects.equals(newCat, "Projector"));
+        }while(!Objects.equals(newCat, "Heating & Cooling") &&!Objects.equals(newCat, "Cooking")&&!Objects.equals(newCat, "Vacuum Cleaner")&&!Objects.equals(newCat, "Coffee Machine")&&!Objects.equals(newCat,"Kettle & Toaster"));
 
-        String selectSQL = "SELECT name " + "from tvandaudio where category ='"+newCat+"'";
+        String selectSQL = "SELECT name " + "from smallappliances where category ='"+newCat+"'";
 
         try (Connection connection = DriverManager.getConnection(url, username, password);
              Statement statement = connection.createStatement();
@@ -59,5 +55,4 @@ public class Tv_And_Audio extends AllProducts implements Categories {
             e.printStackTrace();
         }
     }
-
 }

@@ -1,12 +1,9 @@
 package ie.atu;
 import java.sql.*;
 import java.util.Scanner;
-public class Login {
+public class Login extends AllProducts{
 
     private String TempName;
-    String url = "jdbc:mysql://localhost:3306/electronicstore";
-    String username = "root";
-    String password = "password";
     public Login(){
         this.TempName = "Igor";
     }
@@ -23,7 +20,7 @@ public class Login {
     {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Please enter your name to login");
+        System.out.println("Please enter your name to login: ");
         this.TempName=scanner.nextLine();
     }
 
@@ -63,11 +60,11 @@ public class Login {
         Scanner scanner = new Scanner(System.in);
         String tempName, tempEmail;
         int tempAge;
-        System.out.println("Please enter your email");
+        System.out.println("Please enter your email: ");
         tempEmail = scanner.nextLine();
-        System.out.println("Please enter your name");
+        System.out.println("Please enter your name: ");
         tempName = scanner.nextLine();
-        System.out.println("Please enter your age");
+        System.out.println("Please enter your age: ");
         tempAge = scanner.nextInt();
 
         // Connect to the database
