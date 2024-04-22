@@ -1,4 +1,4 @@
-package ie.atu;
+package ie.atu.standard;
 
 public interface Categories {
     void search();

@@ -1,4 +1,4 @@
-package ie.atu;
+package ie.atu.standard;
 import java.sql.*;
 import java.util.Objects;
 import java.util.Scanner;
@@ -14,18 +14,24 @@ public class Main {
         Computing_And_Gaming comp = new Computing_And_Gaming();
         AllProducts all = new AllProducts();
         Login Client = new Login();
+        Cart cart = new Cart();
+        int sign=0;
 
         System.out.println("--------------------><---------------------");
         System.out.println("              Electronic Store               ");
         System.out.println("--------------------><---------------------");
         System.out.println();
 
+
+
         Client.getUserInput();
-        if (Client.signed()!=1){
-            System.out.println("User not in the Database");
-            System.out.println("Please register");
+        sign= Client.signed();
+        if (sign==0||sign==2){
             Client.register();
         }
+
+
+
 
         do{
             do
@@ -49,60 +55,60 @@ public class Main {
                     if(Objects.equals(subC, "Y"))
                     {
                         tv.subCat();
-                        cartOpt=tv.addToCart();
+                        cartOpt=cart.addToCart();
                         break;
                     }
                     tv.search();
-                    cartOpt=tv.addToCart();
+                    cartOpt=cart.addToCart();
                     break;
 
                 case "Small Appliances":
                     if(Objects.equals(subC,"Y"))
                     {
                         small.subCat();
-                        cartOpt=small.addToCart();
+                        cartOpt=cart.addToCart();
                         break;
                     }
                     small.search();
-                    cartOpt=small.addToCart();
+                    cartOpt=cart.addToCart();
                     break;
 
                 case "Home Appliances":
                     if(Objects.equals(subC,"Y"))
                     {
                         home.subCat();
-                        cartOpt=home.addToCart();
+                        cartOpt=cart.addToCart();
                         break;
                     }
                     home.search();
-                    cartOpt=home.addToCart();
+                    cartOpt=cart.addToCart();
                     break;
 
                 case "Computing and Gaming":
                     if (Objects.equals(subC,"Y"))
                     {
                         comp.subCat();
-                        cartOpt=comp.addToCart();
+                        cartOpt=cart.addToCart();
                         break;
                     }
                     comp.search();
-                    cartOpt=comp.addToCart();
+                    cartOpt=cart.addToCart();
                     break;
 
                 case "Brand":
                     all.brand();
-                    cartOpt=all.addToCart();
+                    cartOpt=cart.addToCart();
                     break;
 
                 case "All Products":
                     if (Objects.equals(subC,"Y"))
                     {
                         all.subCat();
-                        cartOpt=all.addToCart();
+                        cartOpt=cart.addToCart();
                         break;
                     }
                     all.search();
-                    cartOpt=all.addToCart();
+                    cartOpt=cart.addToCart();
                     break;
 
                 default: break;
@@ -112,6 +118,7 @@ public class Main {
         if(Objects.equals(cartOpt,"C"))
         {
             System.out.println("Heading to cart");
+            cart.headToCart();
         }
 
 
