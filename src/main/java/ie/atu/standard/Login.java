@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class Login extends Cart {
 
     private String TempName;
+    private int Account;
     public Login(){
         this.TempName = "Igor";
     }
@@ -19,40 +20,64 @@ public class Login extends Cart {
     public void getUserInput()
     {
         Scanner scanner = new Scanner(System.in);
+        do {
+            System.out.println("Press 1 to Login\nPress 2 to delete account");
+            this.Account=scanner.nextInt();
+        }while(this.Account==1&&this.Account==2);
 
-        System.out.println("Please enter your name to login: ");
+        System.out.println("Please enter your name : ");
         this.TempName=scanner.nextLine();
     }
 
     public int signed()
     {
         int id=0;
-
-        String selectSQL = "SELECT id, age, email " +
-                "FROM customer where name = '" + this.TempName + "'";
-
-        try (Connection connection = DriverManager.getConnection(url, username, password);
-             Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery(selectSQL)) {
-
-            while (resultSet.next()) {
-                id = resultSet.getInt("id");
-                int age = resultSet.getInt("age");
-                String email = resultSet.getString("email");
-
-                System.out.println("Id: " + id + ", Age: " + age + ", Email: " + email);
-                System.out.println("Successfully Logged in");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        if(id!=0)
+        if(this.Account==1)//login
         {
-            return 1;
+            String selectSQL = "SELECT id, age, email " +
+                    "FROM customer where name = '" + this.TempName + "'";
+
+            try (Connection connection = DriverManager.getConnection(url, username, password);
+                 Statement statement = connection.createStatement();
+                 ResultSet resultSet = statement.executeQuery(selectSQL)) {
+
+                while (resultSet.next()) {
+                    id = resultSet.getInt("id");
+                    int age = resultSet.getInt("age");
+                    String email = resultSet.getString("email");
+
+                    System.out.println("Id: " + id + ", Age: " + age + ", Email: " + email);
+                    System.out.println("Successfully Logged in");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            if(id!=0)
+            {
+                return 1;
+            }
+            else {
+                System.out.println("User not in the Database");
+                System.out.println("Please register");
+                return 0;
+            }
         }
-        else {
-            return 0;
+        else//delete account
+        {
+
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection connection = DriverManager.getConnection(url, username, password);
+
+                PreparedStatement st = connection.prepareStatement("DELETE " +
+                        "FROM customer where name = '" + this.TempName + "'");
+                st.executeUpdate();
+            } catch(Exception e) {
+                System.out.println(e);
+            }
+            return 2;
         }
+
     }
 
     public void register()
