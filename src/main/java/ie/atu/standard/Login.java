@@ -20,13 +20,14 @@ public class Login extends Cart {
     public void getUserInput()
     {
         Scanner scanner = new Scanner(System.in);
-        do {
-            System.out.println("Press 1 to Login\nPress 2 to delete account");
-            this.Account=scanner.nextInt();
-        }while(this.Account==1&&this.Account==2);
-
         System.out.println("Please enter your name : ");
         this.TempName=scanner.nextLine();
+        do {
+            System.out.println("Do you want to Login(1) or Delete your Account(2)");
+            this.Account=scanner.nextInt();
+        }while(this.Account!=1&&this.Account!=2);
+
+
     }
 
     public int signed()
@@ -72,7 +73,9 @@ public class Login extends Cart {
                 PreparedStatement st = connection.prepareStatement("DELETE " +
                         "FROM customer where name = '" + this.TempName + "'");
                 st.executeUpdate();
+                System.out.println("The Account has successfully been deleted.");
             } catch(Exception e) {
+                System.out.println("The Account failed to delete");
                 System.out.println(e);
             }
             return 2;
@@ -85,6 +88,7 @@ public class Login extends Cart {
         Scanner scanner = new Scanner(System.in);
         String tempName, tempEmail;
         int tempAge;
+        System.out.println("This is the registration. Please make an account to proceed");
         System.out.println("Please enter your email: ");
         tempEmail = scanner.nextLine();
         System.out.println("Please enter your name: ");
@@ -105,10 +109,10 @@ public class Login extends Cart {
             stmt.setString(3, tempEmail);
             stmt.executeUpdate();
 
-            System.out.println("Insert completed successfully.");
+            System.out.println("Account successfully registered.");
         } catch (SQLException ex) {
 
-            System.out.println("Record insert failed.");
+            System.out.println("Registration has failed.");
             ex.printStackTrace();
         }
         // Close the connection

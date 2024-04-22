@@ -15,6 +15,7 @@ public class Main {
         AllProducts all = new AllProducts();
         Login Client = new Login();
         Cart cart = new Cart();
+        int sign=0;
 
         System.out.println("--------------------><---------------------");
         System.out.println("              Electronic Store               ");
@@ -24,9 +25,8 @@ public class Main {
 
 
         Client.getUserInput();
-        Client.signed();
-
-        if (Client.signed()==0){
+        sign= Client.signed();
+        if (sign==0||sign==2){
             Client.register();
         }
 
