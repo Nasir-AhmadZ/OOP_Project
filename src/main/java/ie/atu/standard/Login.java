@@ -83,7 +83,7 @@ public class Login extends Cart {
 
     }
 
-    public void register()
+    public short register()
             throws SQLException {
         Scanner scanner = new Scanner(System.in);
         String tempName, tempEmail;
@@ -117,6 +117,7 @@ public class Login extends Cart {
         }
         // Close the connection
         conn.close();
+        return 0;
     }
 
 }
