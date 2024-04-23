@@ -1,0 +1,28 @@
+Nasir Ahmad
+David Ajayi
+
+The main is is the file that runs the application at the beginning you will be asked to enter your name
+after you enter your name you can choose to login or delete the account, if you do not have an account or you
+misspell your account name then you will have to make a new account to proceed.
+
+Main contains a switch statement, used to access the different classes
+
+Once you are logged in you can search using the different categories each category is connected to a different class
+so depending on which category you choose you will enter a different class
+
+Categories is an interface that has two functions inside search() and subcat()
+search() is used for searching everything within a category
+subcat() is used if you want to search by a subcategory
+
+The four categories are:
+Computing_And_Gaming
+Home_Appliances
+Small_Appliance
+Tv_And_Audio
+
+AllProducts class displays all products
+Login class is for logging in and registering
+
+The Cart class is used for adding items to the cart addToCart() and also heading to cart headToCart()
+
+
