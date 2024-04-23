@@ -18,7 +18,7 @@ public class Main {
         int sign=0;
 
         System.out.println("--------------------><---------------------");
-        System.out.println("              Electronic Store               ");
+        System.out.println("              Electron City                ");
         System.out.println("--------------------><---------------------");
         System.out.println();
 
